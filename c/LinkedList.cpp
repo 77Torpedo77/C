@@ -30,50 +30,23 @@ int getLength(pHead* ph)
     }
     else
     {
-        printf("参数有误");
+        printf("error");
         return -1;
     }
 }
 
-int insertElm(pHead* ph,int pos,int val)
-{   
-    Node* tpre=NULL;
-    if (ph==NULL||pos<0||val==NULL||pos>ph->length)
-    {
-        printf("出现错误，请检查")；
-        return -1;
-    }
-
-    Node* tnode = (Node*)malloc(sizeof(Node));
-    tndoe->data = val;
-    tpre = (Node*)ph;
-    for (int  i = 0; i < pos; i++)
-    {
-        tpre = tpre->next;
-    }
-    if (pos==ph->length)
-    {
-      addElm(ph,val);
-    }
-    
-    tnode->next = tpre->next;
-    tpre->next = tnode;
-    ph->length++;
-    return 1;
-
-}
 
 int addElm(pHead* ph, int val)
 {
     Node* tpre=NULL;
     if (ph==NULL||val==NULL)
     {
-        printf("出现错误，请检查")；
+        printf("error");
         return -1;
     }
 
     Node* tnode = (Node*)malloc(sizeof(Node));
-    tndoe->data = val;
+    tnode->data = val;
     tpre = (Node*)ph;
 
     for (int  i = 0; i < ph->length; i++)
@@ -87,11 +60,39 @@ int addElm(pHead* ph, int val)
 
 }
 
+int insertElm(pHead* ph,int pos,int val)
+{   
+	Node* tpre=NULL;
+	if (ph==NULL||pos<0||val==NULL||pos>ph->length)
+	{
+		printf("error");
+		return -1;
+	}
+
+	Node* tnode = (Node*)malloc(sizeof(Node));
+	tnode->data = val;
+	tpre = (Node*)ph;
+	for (int  i = 0; i < pos; i++)
+	{
+		tpre = tpre->next;
+	}
+	if (pos==ph->length)
+	{
+		addElm(ph,val);
+	}
+
+	tnode->next = tpre->next;
+	tpre->next = tnode;
+	ph->length++;
+	return 1;
+
+}
+
 Node* find(pHead* ph, int val)
 {
     if (ph==NULL)
     {
-        printf("参数有误");
+        printf("error");
         return NULL;
     }
 
@@ -105,6 +106,6 @@ Node* find(pHead* ph, int val)
         }
         pTmp = pTmp->next;
     }
-    printf("没有值为%d的元素",val);
+    printf("have no %d in the linkedlist",val);
     return NULL;
 }
