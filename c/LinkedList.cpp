@@ -36,8 +36,8 @@ int getLength(pHead* ph)
 }
 
 int insertElm(pHead* ph,int pos,int val)
-{
-    Node* temp;
+{   
+    Node* tpre=NULL;
     if (ph==NULL||pos<0||val==NULL||pos>ph->length)
     {
         printf("出现错误，请检查")；
@@ -46,19 +46,65 @@ int insertElm(pHead* ph,int pos,int val)
 
     Node* tnode = (Node*)malloc(sizeof(Node));
     tndoe->data = val;
-    if (pos==0)
+    tpre = (Node*)ph;
+    for (int  i = 0; i < pos; i++)
     {
-        tnode->next = ph->next;
-        ph->next = tnode;
+        tpre = tpre->next;
     }
-    else
+    if (pos==ph->length)
     {
-        for (int  i = 0; i < pos; i++)
+      addElm(ph,val);
+    }
+    
+    tnode->next = tpre->next;
+    tpre->next = tnode;
+    ph->length++;
+    return 1;
+
+}
+
+int addElm(pHead* ph, int val)
+{
+    Node* tpre=NULL;
+    if (ph==NULL||val==NULL)
+    {
+        printf("出现错误，请检查")；
+        return -1;
+    }
+
+    Node* tnode = (Node*)malloc(sizeof(Node));
+    tndoe->data = val;
+    tpre = (Node*)ph;
+
+    for (int  i = 0; i < ph->length; i++)
+    {
+        tpre = tpre->next;
+    }
+    tpre->next = tnode;
+    tnode->next = NULL;
+    ph->length++;
+    return 1;
+
+}
+
+Node* find(pHead* ph, int val)
+{
+    if (ph==NULL)
+    {
+        printf("参数有误");
+        return NULL;
+    }
+
+    Node* pTmp = NULL;
+    pTmp = (Node*)ph;
+    while (pTmp->next!=NULL)
+    {
+        if (pTmp->data == val)
         {
-            
+            return pTmp;
         }
-        
+        pTmp = pTmp->next;
     }
-    
-    
+    printf("没有值为%d的元素",val);
+    return NULL;
 }
