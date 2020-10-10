@@ -1,17 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "LinkedList.h"
 
-typedef struct Header
-{
-    int length;
-    struct Node* next;
-}pHead;
-
-typedef struct Node
-{
-    int data;
-    struct Node* next;
-}Node;
 
 
 pHead* createList()
@@ -109,3 +99,4 @@ Node* find(pHead* ph, int val)
     printf("have no %d in the linkedlist",val);
     return NULL;
 }
+
