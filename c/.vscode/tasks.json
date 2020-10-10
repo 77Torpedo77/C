@@ -10,7 +10,7 @@
     "showReuseMessage": true,
     "clear": false
   },
-  "args": ["-m32","-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe"],
+  "args": ["-m32","-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe","D:\\Xiang_mu\\c\\linkedList.cpp"],
   "problemMatcher": {
     "owner": "cpp",
     "fileLocation": ["relative", "${workspaceRoot}"],
