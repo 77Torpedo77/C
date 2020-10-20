@@ -10,13 +10,7 @@
     "showReuseMessage": true,
     "clear": false
   },
-  "args": ["-m32",
-    "-g", 
-    "${file}", 
-    "-o", 
-    "${fileDirname}/${fileBasenameNoExtension}.exe",
-    "D:\\Xiang_mu\\c\\SeqList\\SeqList.cpp"
-  ],
+  "args": ["-m32","-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe","D:\\Xiang_mu\\c\\SeqList.cpp"],
   "problemMatcher": {
     "owner": "cpp",
     "fileLocation": ["relative", "${workspaceRoot}"],

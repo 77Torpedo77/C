@@ -100,3 +100,22 @@ Node* find(pHead* ph, int val)
     return NULL;
 }
 
+int delElm(pHead* ph, int val)
+{
+    Node* ptemp= NULL;
+    if(ph == NULL)
+    {
+        printf("linkedlist address error");
+        return -1;
+    }
+
+    ptemp = find(ph,val);
+    if (ptemp == NULL )
+    {
+        printf("have no the elm :%d",val);
+        return -1;
+    }
+
+       
+    
+}
