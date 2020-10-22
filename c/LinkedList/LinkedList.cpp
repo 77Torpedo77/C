@@ -115,7 +115,4 @@ int delElm(pHead* ph, int val)
         printf("have no the elm :%d",val);
         return -1;
     }
-
-       
-    
 }
