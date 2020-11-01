@@ -1,55 +1,54 @@
-//文件名:algo2-2.cpp
 #include <stdio.h>
 #include <malloc.h>
-typedef int ElemType;
+typedef int ElemType;//为了使程序美观
 typedef struct LNode //定义单链表结点类型
 {
 	ElemType data;
 	struct LNode *next;
 } LinkList;
 
-void InitList(LinkList *&L) //初始化线性表
+void initList(LinkList *&L) //初始化线性表
 {
 	L = (LinkList *)malloc(sizeof(LinkList)); //创建头结点
-	L->next = NULL;
+	L->next = NULL;//防止指针悬空
 }
-void DestroyList(LinkList *&L) //销毁线性表
+void delList(LinkList *&L) //销毁线性表
 {
-	LinkList *p = L, *q = p->next;
-	while (q != NULL)
+	LinkList *p = L, *next = p->next;//创建临时指针，方便释放内存
+	while (next != NULL)//只要没销毁完就一直往下走
 	{
-		free(p);
-		p = q;
-		q = p->next;
+		free(p);//释放当前节点
+		p = next;
+		next = p->next;//往下走
 	}
-	free(p);
+	free(p);//最后一步循环时释放掉p
 }
-bool ListEmpty(LinkList *L) //判线性表是否为空表
+bool isEmpty(LinkList *L) //判线性表是否为空表
 {
-	return (L->next == NULL);
+	return (L->next == NULL);//判断，如果头节点的下一个为空，则返回0，反之返回1
 }
-int ListLength(LinkList *L) //求线性表的长度
+int getLength(LinkList *L) //求线性表的长度
 {
-	LinkList *p = L;
+	LinkList *p = L;//创建临时指针
 	int i = 0;
-	while (p->next != NULL)
+	while (p->next != NULL)//当下一个不为空时就一直往下走
 	{
 		i++;
 		p = p->next;
 	}
-	return (i);
+	return (i);//返回计数器i的值
 }
-void DispList(LinkList *L) //输出线性表
+void printList(LinkList *L) //输出线性表
 {
-	LinkList *p = L->next;
-	while (p != NULL)
+	LinkList *p = L->next;//头节点无信息
+	while (p != NULL)//没到表尾就一直打印
 	{
-		printf("%d ", p->data);
-		p = p->next;
+		printf("%d ", p->data);//打印data
+		p = p->next;//往下走
 	}
-	printf("\n");
+	printf("\n");//打印换行，为了美观
 }
-bool GetElem(LinkList *L, int i, ElemType &e) //求线性表中某个数据元素值
+bool isElmExist(LinkList *L, int i, ElemType &e) //求线性表中某个位置的元素是否存在
 {
 	int j = 0;
 	LinkList *p = L;		   //p指向头节点,j置为0(即头节点的序号为0)
@@ -66,7 +65,7 @@ bool GetElem(LinkList *L, int i, ElemType &e) //求线性表中某个数据元素值
 		return true;
 	}
 }
-int LocateElem(LinkList *L, ElemType e) //按元素值查找
+int getElmPos(LinkList *L, ElemType e) //按元素值查找其的位置
 {
 	int i = 1;
 	LinkList *p = L->next;			  //p指向开始节点,i置为1(即开始节点的序号为1)
@@ -80,7 +79,7 @@ int LocateElem(LinkList *L, ElemType e) //按元素值查找
 	else //存在元素值为e的节点,返回其逻辑序号i
 		return (i);
 }
-bool ListInsert(LinkList *&L, int i, ElemType e) //插入数据元素
+bool inserElm(LinkList *&L, int i, ElemType e) //插入数据元素到某一位置
 {
 	int j = 0;
 	LinkList *p = L, *s;		   //p指向头节点,j置为0(即头节点的序号为0)
@@ -100,7 +99,7 @@ bool ListInsert(LinkList *&L, int i, ElemType e) //插入数据元素
 		return true;
 	}
 }
-bool ListDelete(LinkList *&L, int i, ElemType &e) //删除数据元素
+bool delElm(LinkList *&L, int i, ElemType &e) //删除某一个位置的元素
 {
 	int j = 0;
 	LinkList *p = L, *q;		   //p指向头节点,j置为0(即头节点的序号为0)
@@ -123,17 +122,17 @@ bool ListDelete(LinkList *&L, int i, ElemType &e) //删除数据元素
 	}
 }
 
-void CreatList(LinkList *&L)
+void creatList(LinkList *&L)
 {
 	int i;
-	int data;
+	int data;//待输入的数据
 	for (i = 1; i < 20; i++)
 	{
 		scanf(" %d", &data);
-		if (data == 0) //碰到-1时就结束录入
+		if (data == -1) //碰到-1时就结束录入
 		{
 			break;
 		}
-		ListInsert(*&L, i, data);
+		inserElm(*&L, i, data);//调用插入函数将输入的元素插入链表
 	}
 }

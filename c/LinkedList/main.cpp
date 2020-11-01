@@ -7,37 +7,40 @@ int main()
 {
 	LinkList *list;
 	int data,pos;
-	InitList(*&list);
+	initList(*&list);
 
-	printf("plz input 5 int:");
-	CreatList(*&list);
+	printf("plz input 5 int(end of -1):");
+	creatList(*&list);
 	printf("\nthis is the list:");
-	DispList(*&list);
-/*
+	printList(*&list);
+
 	printf("\nplz input the insert val and pos:");
 	scanf("%d %d",&data,&pos);
-	ListInsert(*&list, pos, data);
+	inserElm(*&list, pos, data);
 	printf("\nthis is the list after insert:");
-	DispList(*&list);
+	printList(*&list);
 
 	printf("\nplz input the del val and pos:");
 	scanf("%d %d",&data,&pos);
-	ListDelete(*&list, pos, data);
+	delElm(*&list, pos, data);
 	printf("\nthis is the list after del:");
-	DispList(*&list);
-*/
+	printList(*&list);
+
+	printf("\nplease input a num,if exist,del;if no exist,inset:");	
 	scanf("%d",&data);
-	pos = LocateElem(*&list,data);
+	pos = getElmPos(*&list,data);
 	if (pos)
 	{
-		ListDelete(*&list, pos, data);
-		DispList(*&list);
+		delElm(*&list, pos, data);
+		printf("\nthis is the list:");
+		printList(*&list);
 	}
 	else
 	{
-		pos = ListLength(*&list);
-		ListInsert(*&list, pos+1, data);
-		DispList(*&list);
+		pos = getLength(*&list);
+		inserElm(*&list, pos+1, data);
+		printf("\nthis is the list:");
+		printList(*&list);
 	}
 	
 	

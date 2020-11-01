@@ -1,18 +1,18 @@
-//ÎÄ¼þÃû:algo2-4.cpp
+//ï¿½Ä¼ï¿½ï¿½ï¿½:algo2-4.cpp
 #include <stdio.h>
 #include <malloc.h>
 typedef char ElemType;
-typedef struct LNode		//¶¨Òåµ¥Á´±í½áµãÀàÐÍ
+typedef struct LNode		//ï¿½ï¿½ï¿½åµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 	ElemType data;
     struct LNode *next;
 } LinkList;
-void InitList(LinkList *&L)	//³õÊ¼»¯ÏßÐÔ±í
+void initList(LinkList *&L)	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½
 {
-	L=(LinkList *)malloc(sizeof(LinkList));	//´´½¨Í·½áµã
+	L=(LinkList *)malloc(sizeof(LinkList));	//ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
 	L->next=L;
 }
-void DestroyList(LinkList *&L)	//Ïú»ÙÏßÐÔ±í
+void delList(LinkList *&L)	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½
 {
 	LinkList *p=L,*q=p->next;
 	while (q!=L)
@@ -23,11 +23,11 @@ void DestroyList(LinkList *&L)	//Ïú»ÙÏßÐÔ±í
 	}
 	free(p);
 }
-bool ListEmpty(LinkList *L)	//ÅÐ¿Õ±í
+bool isEmpty(LinkList *L)	//ï¿½Ð¿Õ±ï¿½
 {
 	return(L->next==L);
 }
-int ListLength(LinkList *L)	//Çó±í³¤
+int getLength(LinkList *L)	//ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 	LinkList *p=L;
 	int i=0;
@@ -38,7 +38,7 @@ int ListLength(LinkList *L)	//Çó±í³¤
 	}
 	return(i);
 }
-void DispList(LinkList *L)	//Êä³öÏßÐÔ±í
+void printList(LinkList *L)	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½
 {
 	LinkList *p=L->next;
 	while (p!=L)
@@ -48,18 +48,18 @@ void DispList(LinkList *L)	//Êä³öÏßÐÔ±í
 	}
 	printf("\n");
 }
-bool GetElem(LinkList *L,int i,ElemType &e)	//ÕÒÖ¸¶¨Î»ÖÃµÄÔªËØ
+bool isElmExist(LinkList *L,int i,ElemType &e)	//ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãµï¿½Ôªï¿½ï¿½
 {
 	int j=0;
 	LinkList *p;
-	if (L->next!=L)		//µ¥Á´±í²»Îª¿Õ±íÊ±
+	if (L->next!=L)		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ±ï¿½Ê±
 	{
 		if (i==1)
 		{
 			e=L->next->data;
 			return true;
 		}
-		else			//i²»Îª1Ê±
+		else			//iï¿½ï¿½Îª1Ê±
 		{
 			p=L->next;
 			while (j<i-1 && p!=L)
@@ -76,10 +76,10 @@ bool GetElem(LinkList *L,int i,ElemType &e)	//ÕÒÖ¸¶¨Î»ÖÃµÄÔªËØ
 			}
 		}
 	}
-	else				//¿Õ±í·µ»Øfalse
+	else				//ï¿½Õ±ï¿½ï¿½ï¿½ï¿½ï¿½false
 		return false;
 }
-int LocateElem(LinkList *L,ElemType e)	//²éÕÒÔªËØÎ»ÖÃ
+int getElmPos(LinkList *L,ElemType e)	//ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Î»ï¿½ï¿½
 {
 	LinkList *p=L->next;
 	int n=1;
@@ -93,15 +93,15 @@ int LocateElem(LinkList *L,ElemType e)	//²éÕÒÔªËØÎ»ÖÃ
 	else
 		return(n);
 }
-bool ListInsert(LinkList *&L,int i,ElemType e)	//²åÈëÔªËØ
+bool inserElm(LinkList *&L,int i,ElemType e)	//ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 {
 	int j=0;
 	LinkList *p=L,*s;
-	if (p->next==L || i==1)		//Ô­µ¥Á´±íÎª¿Õ±í»òi==1Ê±
+	if (p->next==L || i==1)		//Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ±ï¿½ï¿½ï¿½i==1Ê±
 	{
-		s=(LinkList *)malloc(sizeof(LinkList));	//´´½¨ÐÂ½áµã*s
+		s=(LinkList *)malloc(sizeof(LinkList));	//ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½*s
 		s->data=e;								
-		s->next=p->next;		//½«*s²åÈëµ½*pÖ®ºó
+		s->next=p->next;		//ï¿½ï¿½*sï¿½ï¿½ï¿½ëµ½*pÖ®ï¿½ï¿½
 		p->next=s;
 		return true;
 	}
@@ -113,33 +113,33 @@ bool ListInsert(LinkList *&L,int i,ElemType e)	//²åÈëÔªËØ
 			j++;
 			p=p->next;
 		}
-		if (p==L)				//Î´ÕÒµ½µÚi-1¸ö½áµã
+		if (p==L)				//Î´ï¿½Òµï¿½ï¿½ï¿½i-1ï¿½ï¿½ï¿½ï¿½ï¿½
 			return false;
-		else					//ÕÒµ½µÚi-1¸ö½áµã*p
+		else					//ï¿½Òµï¿½ï¿½ï¿½i-1ï¿½ï¿½ï¿½ï¿½ï¿½*p
 		{
-			s=(LinkList *)malloc(sizeof(LinkList));	//´´½¨ÐÂ½áµã*s
+			s=(LinkList *)malloc(sizeof(LinkList));	//ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½*s
 			s->data=e;								
-			s->next=p->next;						//½«*s²åÈëµ½*pÖ®ºó
+			s->next=p->next;						//ï¿½ï¿½*sï¿½ï¿½ï¿½ëµ½*pÖ®ï¿½ï¿½
 			p->next=s;
 			return true;
 		}
 	}
 }
-bool ListDelete(LinkList *&L,int i,ElemType &e)	//É¾³ýÔªËØ
+bool delElm(LinkList *&L,int i,ElemType &e)	//É¾ï¿½ï¿½Ôªï¿½ï¿½
 {
 	int j=0;
 	LinkList *p=L,*q;
-	if (p->next!=L)					//Ô­µ¥Á´±í²»Îª¿Õ±íÊ±
+	if (p->next!=L)					//Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ±ï¿½Ê±
 	{
 		if (i==1)					//i==1Ê±
 		{
-			q=L->next;				//É¾³ýµÚ1¸ö½áµã
+			q=L->next;				//É¾ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½
 			e=q->data;
 			L->next=q->next;
 			free(q);
 			return true;
 		}
-		else						//i²»Îª1Ê±
+		else						//iï¿½ï¿½Îª1Ê±
 		{
 			p=L->next;
 			while (j<i-2 && p!=L)
@@ -147,19 +147,19 @@ bool ListDelete(LinkList *&L,int i,ElemType &e)	//É¾³ýÔªËØ
 				j++;
 				p=p->next;
 			}
-			if (p==L)				//Î´ÕÒµ½µÚi-1¸ö½áµã
+			if (p==L)				//Î´ï¿½Òµï¿½ï¿½ï¿½i-1ï¿½ï¿½ï¿½ï¿½ï¿½
 				return false;
-			else					//ÕÒµ½µÚi-1¸ö½áµã*p
+			else					//ï¿½Òµï¿½ï¿½ï¿½i-1ï¿½ï¿½ï¿½ï¿½ï¿½*p
 			{
-				q=p->next;			//qÖ¸ÏòÒªÉ¾³ýµÄ½áµã
+				q=p->next;			//qÖ¸ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ä½ï¿½ï¿½
 				e=q->data;
-				p->next=q->next;	//´Óµ¥Á´±íÖÐÉ¾³ý*q½áµã
-				free(q);			//ÊÍ·Å*q½áµã
+				p->next=q->next;	//ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½*qï¿½ï¿½ï¿½
+				free(q);			//ï¿½Í·ï¿½*qï¿½ï¿½ï¿½
 				return true;
 			}
 		}
 	}
-	else							//¿Õ±í·µ»Øfalse
+	else							//ï¿½Õ±ï¿½ï¿½ï¿½ï¿½ï¿½false
 		return false;
 }
 
