@@ -1,5 +1,21 @@
 {
     "files.associations": {
-        "第一次作业.C": "cpp"
+        "第一次作业.C": "cpp",
+        "unordered_map": "cpp",
+        "initializer_list": "cpp",
+        "limits": "cpp",
+        "type_traits": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "optional": "cpp",
+        "fstream": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp"
     }
 }
