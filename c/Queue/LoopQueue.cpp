@@ -62,3 +62,18 @@ void printQueue(lqueue *lq)//打印队列
 	}
 	printf("\n");
 }
+
+int getLen(lqueue *lq) {    //获取队列长度
+	return(lq->rear - lq->front + N) % N;
+}
+
+
+void aa(lqueue *lq) {//调用出对函数把队列q中的元素一一出对列，如果是负数直接抛弃；如果是正数，//则调用入队函数，插入到q的队尾。
+	int data;
+	int len = getLen(lq);  //遍历完原长结束循环
+	for (int i = 0; i < len; i++) {
+		outQueue(lq, &data);
+		if (data > 0)
+			intoQueue(lq, data);
+	}
+}

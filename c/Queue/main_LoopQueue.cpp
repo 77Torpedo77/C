@@ -9,7 +9,7 @@ int main()
 
 	initQueue(&lq); // 创建一个空循环队列  
 
-	printf("plz input elm(end for 0)"); // 输入数据,0作为结束标志  
+	printf("plz input elm(end for -1)"); // 输入数据,-1作为结束标志  
 	scanf(" %d", &data);
 	while (data != -1)
 	{
@@ -17,16 +17,12 @@ int main()
 		scanf(" %d", &data);
 	}
 
-	printf("the data from head to tail are:");
+	printf("this is the queue before aa:");
 	printQueue(&lq); // 输出循环队列  
 	printf("\n");
 
-	printf("out queue a enement");
-	i = outQueue(&lq, &data);
-	if (i)
-		printf("%4d\n", data);
-
-	printf("the data from head to tail are:");
+	aa(&lq);
+	printf("this is the queue after aa:");
 	printQueue(&lq); // 输出循环队列  
-	printf("\n");
+	system("pause");
 }
