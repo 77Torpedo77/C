@@ -1,4 +1,4 @@
-#ifndef _SEQLIST_H_
+﻿#ifndef _SEQLIST_H_
 #define _SEQLIST_H_
 
 #define MAXNUM 128 //限制表的最大长度，设置为超过20的是为了防止满表插入情况
